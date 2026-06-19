@@ -2,9 +2,12 @@
 Este repositório contém um conjunto de testes automatizados end-to-end desenvolvidos com Cypress e Cucumber Preprocessor, utilizando a sintaxe Gherkin para cenários de teste.
 
 🛠️ Passo a passo de instalação
+
 Instalar Node.js
 
 Baixe e instale a versão LTS do Node.js em nodejs.org.
+
+----------------
 
 Verifique se está instalado:
 
@@ -13,22 +16,31 @@ node -v
 npm -v
 Criar o projeto Cypress
 
+------------------
+
 No terminal, dentro da pasta do projeto:
 
 bash
 npm init -y
+
 Instalar Cypress e dependências
+
+-----------
 
 Instale o Cypress:
 
 bash
 npm install cypress --save-dev
 
+------------
+
 Instale o cucumber-preprocessor e bundler:
 
 bash
 npm install @badeball/cypress-cucumber-preprocessor @bahmutov/cypress-esbuild-preprocessor --save-dev
 Configurar o cypress.config.js
+
+--------------
 
 Estrutura de pastas
 
@@ -37,6 +49,8 @@ cypress/features/ → arquivos .feature (cenários em Gherkin).
 cypress/support/step_definitions/ → arquivos .js com implementação dos steps.
 
 cypress/support/e2e.js → pode ser vazio ou importar comandos globais.
+
+----------
 
 ▶️ Execução dos testes
 Abrir o runner do Cypress
