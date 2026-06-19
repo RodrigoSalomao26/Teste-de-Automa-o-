@@ -1,0 +1,12 @@
+# Dependências
+node_modules/
+
+# Artefatos de testes Cypress
+cypress/videos/
+cypress/screenshots/
+
+# Configurações de IDE
+.idea/
+
+# Logs
+*.log
