@@ -1,4 +1,4 @@
-# Teste-de-Automa-o-
+# Teste-de-Automação
 Este repositório contém um conjunto de testes automatizados end-to-end desenvolvidos com Cypress e Cucumber Preprocessor, utilizando a sintaxe Gherkin para cenários de teste.
 
 🛠️ Passo a passo de instalação
