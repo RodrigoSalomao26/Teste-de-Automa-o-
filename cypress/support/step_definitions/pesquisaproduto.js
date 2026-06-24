@@ -1,31 +1,23 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-describe('Pesquisa de produtos', () => {
+Given("que estou na página de produtos", () => {
+  cy.visit("https://automationexercise.com/products");
+});
 
-  it('Deve encontrar produto existente', () => {
-    cy.visit('https://automationexercise.com/products')
+When("eu pesquiso por {string}", (produto) => {
+  cy.get('input#search_product', { timeout: 10000 })
+    .should('be.visible')
+    .type(produto);
+  cy.get('button#submit_search').click();
+});
 
-    // Digita o nome de um produto que existe
-    cy.get('input#search_product').type('Sleeveless Dress')
-    cy.get('button#submit_search').click()
+Then("devo visualizar o produto {string}", (produto) => {
+  cy.contains(produto).should("be.visible");
+});
 
-    // Valida que o produto aparece nos resultados
-    cy.contains('Sleeveless Dress').should('be.visible')
-  })
+Then("nenhum produto deve ser exibido", () => {
+  cy.get('.product-image-wrapper').should('not.exist');
+});
 
-})
 
-describe('Pesquisa de produto inexistente', () => {
 
-  it('Deve mostrar mensagem para produto inexistente', () => {
-    cy.visit('https://automationexercise.com/products')
-
-    // Digita um nome que não existe
-    cy.get('input#search_product').type('car')
-    cy.get('button#submit_search').click()
-
-    // Valida que não há produtos listados
-    cy.get('.product-image-wrapper').should('not.exist')
-  })
-
-})

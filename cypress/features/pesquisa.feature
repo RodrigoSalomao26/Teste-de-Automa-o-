@@ -1,10 +1,11 @@
 Feature: Pesquisa de produtos
-  Scenario: Pesquisa de produto existente
+
+  Scenario: Produto existente
     Given que estou na página de produtos
     When eu pesquiso por "Sleeveless Dress"
-    Then o sistema deve mostrar o produto "Sleeveless Dress"
+    Then devo visualizar o produto "Sleeveless Dress"
 
-  Scenario: Pesquisa de produto inexistente
+  Scenario: Produto inexistente
     Given que estou na página de produtos
-    When eu pesquiso por "ProdutoInexistente123"
-    Then o sistema não deve mostrar nenhum produto
+    When eu pesquiso por "car"
+    Then nenhum produto deve ser exibido

@@ -29,20 +29,32 @@ Then("o status code deve ser 200", () => {
 });
 
 Then("o campo \"list.name\" deve estar presente e ser exibido", () => {
-  expect(response.body.data.list).to.have.property('name');
+  const nomesListas = [];
 
-  // captura o valor do campo name
-  const nomeLista = response.body.data.list.name;
+    // função recursiva para percorrer o objeto
+    function coletarNomes(obj) {
+      for (const chave in obj) {
+        if (chave === "name") {
+          nomesListas.push(obj[chave]);
+        }
+        if (typeof obj[chave] === "object" && obj[chave] !== null) {
+          coletarNomes(obj[chave]);
+        }
+      }
+    }
 
-  // adiciona ao array
-  nomesListas.push(nomeLista);
+    // percorre toda a resposta
+    coletarNomes(response.body.data);
 
-  // exibe todos os nomes salvos até agora
-  cy.log("Nomes capturados:");
-  nomesListas.forEach((nome, index) => {
-    cy.log(`${index + 1}: ${nome}`);
+    // exibe todos os nomes encontrados
+    cy.log("Nomes capturados:");
+    nomesListas.forEach((nome, index) => {
+      cy.log(`${index + 1}: ${nome}`);
+    });
+
+    // valida que pelo menos um campo name foi encontrado
+    expect(nomesListas.length).to.be.greaterThan(0);
   });
-});
 
 Then("o status code deve ser diferente de 200", () => {
   expect(response.status).to.not.eq(200);

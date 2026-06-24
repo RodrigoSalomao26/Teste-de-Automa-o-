@@ -1,6 +1,6 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-Given("que estou na página de login", () => {
+Given("que estou na página de cadastro", () => {
   cy.visit("https://www.automationexercise.com/login");
 });
 
